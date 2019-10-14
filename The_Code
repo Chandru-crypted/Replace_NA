@@ -1,0 +1,20 @@
+library(tidyverse)
+View(mpg)
+# I will make a specific element in dspl to NA , the 8th element in column displ 
+mpg[8, "displ"] = NA
+# mpg$displ is the column in which we are going to change the values , please change the table name 
+# and column name according to your desired needs 
+View(mpg$displ)
+# the function that will compute the mean of the 5 random samples 
+func <- function(n){
+  samp = sample(mpg$displ, n)
+  return(mean(samp))
+}
+for (i in 1 : length(mpg$displ)){
+  if (is.na(mpg[i,'displ'])){ 
+    mpg[i,'displ'] <- func(2)
+  }
+}
+View(mpg$displ)
+# the argument in which u pass the func is the number of random values that u want to find the 
+# mean of it and then replace it 
